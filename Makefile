@@ -1,5 +1,5 @@
 # renovate: datasource=docker depName=golangci/golangci-lint
-GOLANGCI_LINT_VERSION = v1.63.4
+GOLANGCI_LINT_VERSION = v1.64.5
 .DEFAULT_GOAL := help
 
 .PHONY: help
