@@ -1,48 +1,9 @@
-linters-settings:
-  ginkgolinter:
-    forbid-focus-container: true
-  misspell:
-    locale: US
-  revive:
-    ignore-generated-header: true
-    rules:
-      - name: blank-imports
-      - name: context-as-argument
-      - name: context-keys-type
-      - name: dot-imports
-        arguments:
-          - allowedPackages:
-              - github.com/onsi/gomega
-              - github.com/onsi/ginkgo/v2
-      - name: empty-block
-      - name: error-naming
-      - name: error-return
-      - name: error-strings
-      - name: errorf
-      - name: exported
-      - name: increment-decrement
-      - name: indent-error-flow
-      - name: package-comments
-      - name: range
-      - name: receiver-naming
-      - name: redefines-builtin-id
-      - name: superfluous-else
-      - name: time-naming
-      - name: unexported-return
-      - name: unreachable-code
-      - name: unused-parameter
-      - name: var-declaration
-      - name: var-naming
-  gocyclo:
-    min-complexity: 15
-  govet:
-    enable-all: true
-  lll:
-    line-length: 120
-  dupword:
-    ignore:
-      - "test"
+version: "2"
+run:
+  build-tags:
+    - generator
 linters:
+  default: none
   enable:
     - asasalint
     - asciicheck
@@ -63,11 +24,7 @@ linters:
     - gocritic
     - gocyclo
     - godot
-    - gofmt
-    - gofumpt
-    - goimports
     - gosec
-    - gosimple
     - gosmopolitan
     - govet
     - ineffassign
@@ -88,12 +45,9 @@ linters:
     - revive
     - spancheck
     - staticcheck
-    - stylecheck
     - tagalign
-    - tenv
     - thelper
     - tparallel
-    - typecheck
     - unconvert
     - unparam
     - unused
@@ -101,11 +55,71 @@ linters:
     - wastedassign
     - whitespace
     - wrapcheck
-  disable-all: true
+  settings:
+    dupword:
+      ignore:
+        - test
+    ginkgolinter:
+      forbid-focus-container: true
+    gocyclo:
+      min-complexity: 15
+    govet:
+      enable-all: true
+    lll:
+      line-length: 120
+    misspell:
+      locale: US
+    revive:
+      rules:
+        - name: blank-imports
+        - name: context-as-argument
+        - name: context-keys-type
+        - name: dot-imports
+          arguments:
+            - allowedPackages:
+                - github.com/onsi/gomega
+                - github.com/onsi/ginkgo/v2
+        - name: empty-block
+        - name: error-naming
+        - name: error-return
+        - name: error-strings
+        - name: errorf
+        - name: exported
+        - name: increment-decrement
+        - name: indent-error-flow
+        - name: package-comments
+        - name: range
+        - name: receiver-naming
+        - name: redefines-builtin-id
+        - name: superfluous-else
+        - name: time-naming
+        - name: unexported-return
+        - name: unreachable-code
+        - name: unused-parameter
+        - name: var-declaration
+        - name: var-naming
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
 issues:
   max-issues-per-linter: 0
   max-same-issues: 0
-run:
-  timeout: 3m
-  build-tags:
-    - generator
+formatters:
+  enable:
+    - gofmt
+    - gofumpt
+    - goimports
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
