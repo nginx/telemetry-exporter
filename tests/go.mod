@@ -6,7 +6,7 @@ replace github.com/nginx/telemetry-exporter => ../
 
 require (
 	github.com/go-logr/logr v1.4.2
-	github.com/nginx/telemetry-exporter v0.0.0
+	github.com/nginx/telemetry-exporter v0.1.4
 	github.com/onsi/ginkgo/v2 v2.23.4
 	github.com/onsi/gomega v1.37.0
 	github.com/testcontainers/testcontainers-go v0.37.0
