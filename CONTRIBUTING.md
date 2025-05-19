@@ -63,7 +63,7 @@ issue template.
 
 ### F5 Contributor License Agreement (CLA)
 
-F5 requires all external contributors to agree to the terms of the F5 CLA (available [here](https://github.com/f5/.github/blob/main/CLA/cla-markdown.md))
+F5 requires all external contributors to agree to [the terms of the F5 CLA](https://github.com/f5/.github/blob/main/CLA/cla-markdown.md)
 before any of their changes can be incorporated into an F5 Open Source repository.
 
 If you have not yet agreed to the F5 CLA terms and submit a PR to this repository, a bot will prompt you to view and
@@ -76,8 +76,7 @@ can be merged. Your agreement signature will be safely stored by F5 and no longe
 
 - Keep a clean, concise and meaningful git commit history on your branch, rebasing locally and squashing before
   submitting a PR
-- Follow the guidelines of writing a good commit message as described here <https://chris.beams.io/posts/git-commit/>
-  and summarized in the next few points
+- Follow the [guidelines of writing a good commit message](<https://chris.beams.io/posts/git-commit/>) summarized in the next few points
   - In the subject line, use the present tense ("Add feature" not "Added feature")
   - In the subject line, use the imperative mood ("Move cursor to..." not "Moves cursor to...")
   - Limit the subject line to 72 characters or less
@@ -90,6 +89,6 @@ can be merged. Your agreement signature will be safely stored by F5 and no longe
 - Run `gofmt` over your code to automatically resolve a lot of style issues. Most editors support this running
   automatically when saving a code file.
 - Run `go lint` and `go vet` on your code too to catch any other issues.
-- Follow this guide on some good practice and idioms for Go - <https://github.com/golang/go/wiki/CodeReviewComments>
+- Follow [the guide](<https://github.com/golang/go/wiki/CodeReviewComments>) on some good practice and idioms for Go.
 - To check for extra issues, install [golangci-lint](https://github.com/golangci/golangci-lint) and run `make lint` or
   `golangci-lint run`
