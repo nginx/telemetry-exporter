@@ -19,11 +19,10 @@ and [NGINX Gateway Fabric](https://github.com/nginx/nginx-gateway-fabric) projec
 If you experience issues with this project, please [open a bug][bug] in
 GitHub. If you have any suggestions or feature requests, please [open an idea][idea] on GitHub discussions.
 
-You can also get help through the [NGINX Community Forum](forum).
+You can also get help through the [NGINX Community Forum](https://community.nginx.org).
 
 [bug]: https://github.com/nginx/telemetry-exporter/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=
 [idea]: https://github.com/nginx/telemetry-exporter/discussions/categories/ideas
-[forum]: https://community.nginx.org/
 
 ## Contributing
 
