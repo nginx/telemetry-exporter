@@ -168,10 +168,6 @@ func (fake *FakeSpanExporter) ShutdownReturnsOnCall(i int, result1 error) {
 func (fake *FakeSpanExporter) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
-	fake.exportSpansMutex.RLock()
-	defer fake.exportSpansMutex.RUnlock()
-	fake.shutdownMutex.RLock()
-	defer fake.shutdownMutex.RUnlock()
 	copiedInvocations := map[string][][]interface{}{}
 	for key, value := range fake.invocations {
 		copiedInvocations[key] = value
