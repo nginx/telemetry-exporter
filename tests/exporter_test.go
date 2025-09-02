@@ -79,7 +79,7 @@ var _ = Describe("Exporter", func() {
 
 		collectorImage := "otel/opentelemetry-collector-contrib"
 		// renovate: datasource=docker depName=otel/opentelemetry-collector-contrib
-		collectorImageVersion := "0.129.1"
+		collectorImageVersion := "0.133.0"
 
 		const collectorCfgName = "collector.yaml"
 
