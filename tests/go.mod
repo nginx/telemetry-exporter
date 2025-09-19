@@ -7,7 +7,7 @@ replace github.com/nginx/telemetry-exporter => ../
 require (
 	github.com/go-logr/logr v1.4.3
 	github.com/nginx/telemetry-exporter v0.1.4
-	github.com/onsi/ginkgo/v2 v2.25.2
+	github.com/onsi/ginkgo/v2 v2.25.3
 	github.com/onsi/gomega v1.38.2
 	github.com/testcontainers/testcontainers-go v0.39.0
 	go.opentelemetry.io/otel v1.38.0
