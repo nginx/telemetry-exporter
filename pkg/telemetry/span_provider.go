@@ -23,11 +23,10 @@ func CreateOTLPSpanProvider(options ...otlptracegrpc.Option) SpanProvider {
 
 // newOTLPExporter creates a new gRPC OTLP exporter.
 func newOTLPExporter(ctx context.Context, options ...otlptracegrpc.Option) (*otlptrace.Exporter, error) {
-	defaultOptions := []otlptracegrpc.Option{
-		otlptracegrpc.WithHeaders(map[string]string{
-			"X-F5-OTEL": "GRPC",
-		}),
-	}
+	defaultOptions := make([]otlptracegrpc.Option, 0, len(options)+1)
+	defaultOptions = append(defaultOptions, otlptracegrpc.WithHeaders(map[string]string{
+		"X-F5-OTEL": "GRPC",
+	}))
 
 	traceClient := otlptracegrpc.NewClient(append(defaultOptions, options...)...)
 	exp, err := otlptrace.New(ctx, traceClient)
