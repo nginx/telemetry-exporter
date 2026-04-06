@@ -1,7 +1,6 @@
 <!-- markdownlint-disable-next-line first-line-h1 -->
 [![OpenSSFScorecard](https://api.securityscorecards.dev/projects/github.com/nginx/telemetry-exporter/badge)](https://scorecard.dev/viewer/?uri=github.com/nginx/telemetry-exporter)
 [![CI](https://github.com/nginx/telemetry-exporter/actions/workflows/ci.yml/badge.svg)](https://github.com/nginx/telemetry-exporter/actions/workflows/ci.yml)
-[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B5618%2Fgithub.com%2Fnginx%2Ftelemetry-exporter.svg?type=shield)](https://app.fossa.com/projects/custom%2B5618%2Fgithub.com%2Fnginx%2Ftelemetry-exporter?ref=badge_shield)
 [![Go Reference](https://pkg.go.dev/badge/github.com/nginx/telemetry-exporter.svg)](https://pkg.go.dev/github.com/nginx/telemetry-exporter)
 [![Go Report Card](https://goreportcard.com/badge/github.com/nginx/telemetry-exporter)](https://goreportcard.com/report/github.com/nginx/telemetry-exporter)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/nginx/telemetry-exporter?logo=go)
