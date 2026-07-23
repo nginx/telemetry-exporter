@@ -26,7 +26,7 @@ jobs:
         directory: [., tests] # we need to run golangci-lint for every module https://github.com/golangci/golangci-lint/issues/828
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
       - name: Setup Golang Environment
         uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
       - name: Lint Actions
         uses: reviewdog/action-actionlint@50842263c20a7c46bd0065b9e624d3c569db061e # v1.73
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
       - name: Lint Markdown
         uses: DavidAnson/markdownlint-cli2-action@6b51ade7a9e4a75a7ad929842dd298a3804ebe8b # v23.1.0
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
       - name: Lint YAML
         uses: reviewdog/action-yamllint@f01d8a48fd8d89f89895499fca2cff09f9e9e8c0 # v1.21.0
