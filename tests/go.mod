@@ -5,7 +5,7 @@ go 1.25.0
 replace github.com/nginx/telemetry-exporter => ../
 
 require (
-	github.com/go-logr/logr v1.4.3
+	github.com/go-logr/logr v1.4.4
 	github.com/nginx/telemetry-exporter v0.1.5
 	github.com/onsi/ginkgo/v2 v2.28.3
 	github.com/onsi/gomega v1.40.0
