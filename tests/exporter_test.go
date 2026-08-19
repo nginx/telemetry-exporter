@@ -72,7 +72,7 @@ var _ = Describe("Exporter", func() {
 		collector testcontainers.Container
 	)
 
-	BeforeEach(func() {
+	BeforeEach(func(_ SpecContext) {
 		ctx := context.Background()
 
 		//  Run the collector container
@@ -136,7 +136,7 @@ var _ = Describe("Exporter", func() {
 		)
 		Expect(err).ToNot(HaveOccurred())
 		DeferCleanup(exporter.Shutdown, ctx)
-	})
+	}, NodeTimeout(time.Minute))
 
 	It("exports data successfully", func(ctx SpecContext) {
 		lc.setExpectedSubstrings([]string{
@@ -152,5 +152,5 @@ var _ = Describe("Exporter", func() {
 		Eventually(func() int {
 			return lc.unmatchedCount()
 		}).WithContext(ctx).Should(BeZero())
-	}, SpecTimeout(time.Second*10))
+	}, NodeTimeout(time.Second*10))
 })
