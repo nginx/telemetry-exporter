@@ -24,7 +24,7 @@ permissions:
 jobs:
   vars:
     name: Checks and variables
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: write
       pull-requests: read
@@ -62,7 +62,7 @@ jobs:
 
   unit-tests:
     name: Unit Tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: vars
     steps:
       - name: Checkout Repository
@@ -87,7 +87,7 @@ jobs:
 
   functional-tests:
     name: Functional Tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: vars
     steps:
       - name: Checkout Repository
@@ -103,7 +103,7 @@ jobs:
 
   release-notes:
     name: Release Notes
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     permissions:
       contents: write
       issues: write
