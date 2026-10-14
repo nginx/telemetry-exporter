@@ -191,7 +191,7 @@ type field struct {
 // - Must have unique names across all embedded structs.
 // - Must have a doc string comment for each field.
 func parse(parsingCfg parsingConfig) (parsingResult, error) {
-	mode := packages.NeedName | packages.NeedTypes | packages.NeedTypesInfo
+	mode := packages.NeedName | packages.NeedDeps | packages.NeedTypes | packages.NeedTypesInfo
 
 	cfg := packages.Config{
 		Mode:       mode,
