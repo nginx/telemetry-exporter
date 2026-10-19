@@ -12,11 +12,8 @@ import (
 type FakeSpanExporter struct {
 	ExportSpansStub        func(context.Context, []trace.ReadOnlySpan) error
 	exportSpansMutex       sync.RWMutex
-	exportSpansArgsForCall []struct {
-		arg1 context.Context
-		arg2 []trace.ReadOnlySpan
-	}
-	exportSpansReturns struct {
+	exportSpansArgsForCall []FakeSpanExporterExportSpansArgs
+	exportSpansReturns     struct {
 		result1 error
 	}
 	exportSpansReturnsOnCall map[int]struct {
@@ -24,17 +21,27 @@ type FakeSpanExporter struct {
 	}
 	ShutdownStub        func(context.Context) error
 	shutdownMutex       sync.RWMutex
-	shutdownArgsForCall []struct {
-		arg1 context.Context
-	}
-	shutdownReturns struct {
+	shutdownArgsForCall []FakeSpanExporterShutdownArgs
+	shutdownReturns     struct {
 		result1 error
 	}
 	shutdownReturnsOnCall map[int]struct {
 		result1 error
 	}
 	invocations      map[string][][]interface{}
+	callOrder        []string
 	invocationsMutex sync.RWMutex
+}
+
+// FakeSpanExporterExportSpansArgs holds the arguments of one call to ExportSpans.
+type FakeSpanExporterExportSpansArgs struct {
+	Arg1 context.Context
+	Arg2 []trace.ReadOnlySpan
+}
+
+// FakeSpanExporterShutdownArgs holds the arguments of one call to Shutdown.
+type FakeSpanExporterShutdownArgs struct {
+	Arg1 context.Context
 }
 
 func (fake *FakeSpanExporter) ExportSpans(arg1 context.Context, arg2 []trace.ReadOnlySpan) error {
@@ -45,10 +52,7 @@ func (fake *FakeSpanExporter) ExportSpans(arg1 context.Context, arg2 []trace.Rea
 	}
 	fake.exportSpansMutex.Lock()
 	ret, specificReturn := fake.exportSpansReturnsOnCall[len(fake.exportSpansArgsForCall)]
-	fake.exportSpansArgsForCall = append(fake.exportSpansArgsForCall, struct {
-		arg1 context.Context
-		arg2 []trace.ReadOnlySpan
-	}{arg1, arg2Copy})
+	fake.exportSpansArgsForCall = append(fake.exportSpansArgsForCall, FakeSpanExporterExportSpansArgs{arg1, arg2Copy})
 	stub := fake.ExportSpansStub
 	fakeReturns := fake.exportSpansReturns
 	fake.recordInvocation("ExportSpans", []interface{}{arg1, arg2Copy})
@@ -78,7 +82,15 @@ func (fake *FakeSpanExporter) ExportSpansArgsForCall(i int) (context.Context, []
 	fake.exportSpansMutex.RLock()
 	defer fake.exportSpansMutex.RUnlock()
 	argsForCall := fake.exportSpansArgsForCall[i]
-	return argsForCall.arg1, argsForCall.arg2
+	return argsForCall.Arg1, argsForCall.Arg2
+}
+
+func (fake *FakeSpanExporter) ExportSpansArgs() []FakeSpanExporterExportSpansArgs {
+	fake.exportSpansMutex.RLock()
+	defer fake.exportSpansMutex.RUnlock()
+	args := make([]FakeSpanExporterExportSpansArgs, len(fake.exportSpansArgsForCall))
+	copy(args, fake.exportSpansArgsForCall)
+	return args
 }
 
 func (fake *FakeSpanExporter) ExportSpansReturns(result1 error) {
@@ -107,9 +119,7 @@ func (fake *FakeSpanExporter) ExportSpansReturnsOnCall(i int, result1 error) {
 func (fake *FakeSpanExporter) Shutdown(arg1 context.Context) error {
 	fake.shutdownMutex.Lock()
 	ret, specificReturn := fake.shutdownReturnsOnCall[len(fake.shutdownArgsForCall)]
-	fake.shutdownArgsForCall = append(fake.shutdownArgsForCall, struct {
-		arg1 context.Context
-	}{arg1})
+	fake.shutdownArgsForCall = append(fake.shutdownArgsForCall, FakeSpanExporterShutdownArgs{arg1})
 	stub := fake.ShutdownStub
 	fakeReturns := fake.shutdownReturns
 	fake.recordInvocation("Shutdown", []interface{}{arg1})
@@ -139,7 +149,15 @@ func (fake *FakeSpanExporter) ShutdownArgsForCall(i int) context.Context {
 	fake.shutdownMutex.RLock()
 	defer fake.shutdownMutex.RUnlock()
 	argsForCall := fake.shutdownArgsForCall[i]
-	return argsForCall.arg1
+	return argsForCall.Arg1
+}
+
+func (fake *FakeSpanExporter) ShutdownArgs() []FakeSpanExporterShutdownArgs {
+	fake.shutdownMutex.RLock()
+	defer fake.shutdownMutex.RUnlock()
+	args := make([]FakeSpanExporterShutdownArgs, len(fake.shutdownArgsForCall))
+	copy(args, fake.shutdownArgsForCall)
+	return args
 }
 
 func (fake *FakeSpanExporter) ShutdownReturns(result1 error) {
@@ -175,9 +193,18 @@ func (fake *FakeSpanExporter) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
+func (fake *FakeSpanExporter) CallOrder() []string {
+	fake.invocationsMutex.RLock()
+	defer fake.invocationsMutex.RUnlock()
+	order := make([]string, len(fake.callOrder))
+	copy(order, fake.callOrder)
+	return order
+}
+
 func (fake *FakeSpanExporter) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
+	fake.callOrder = append(fake.callOrder, key)
 	if fake.invocations == nil {
 		fake.invocations = map[string][][]interface{}{}
 	}
